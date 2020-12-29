@@ -21,6 +21,10 @@ import XMonad.Util.Run
 -- Layout
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
+
+-- Keybinds
+import Graphics.X11.ExtraTypes.XF86
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -137,7 +141,43 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    -- , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+    , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+
+    -- CUSTOM KEYBINDS
+    , ((modm .|. shiftMask          , xK_p          ), spawn "powermenu")
+    , ((modm .|. shiftMask          , xK_l          ), spawn "light-locker-command -l")
+
+    -- Program keybinds
+    , ((modm .|. shiftMask          , xK_e          ), spawn "clipedit")
+    , ((mod4Mask                    , xK_f          ), spawn "firefox-nightly")
+    , ((mod4Mask                    , xK_d          ), spawn "discord-canary")
+    , ((mod4Mask                    , xK_m          ), spawn "st -e neomutt")
+    , ((mod4Mask                    , xK_r          ), spawn "st -e ranger")
+    , ((mod4Mask                    , xK_p          ), spawn "passmenu")
+
+    -- Dunst keybinds
+    , ((mod4Mask                    , xK_Escape     ), spawn "dunstctl close")
+    , ((mod4Mask .|. shiftMask      , xK_Escape     ), spawn "dunstctl close-all")
+    , ((mod4Mask                    , xK_grave      ), spawn "dunstctl history-pop")
+    , ((mod4Mask .|. shiftMask      , xK_period     ), spawn "dunstctl context")
+
+    -- Upload keybinds
+    , ((mod4Mask                    , xK_u          ), spawn "imupdrag")
+    , ((mod4Mask .|. shiftMask      , xK_u          ), spawn "imupclip")
+
+    -- Keyboard layout keybinds
+    , ((mod4Mask .|. modm           , xK_z          ), spawn "setxkbmap -layout us")
+    , ((mod4Mask .|. modm           , xK_x          ), spawn "setxkbmap -layout us -variant altgr-intl")
+
+    -- Screenshot keybinds
+    , ((0                           , xK_Print      ), spawn "ssclip select")
+    , ((controlMask                 , xK_Print      ), spawn "ssclip window")
+    , ((controlMask .|. shiftMask   , xK_Print      ), spawn "ssclip full")
+
+    -- Volume keybinds
+    , ((0                           , xF86XK_AudioMute          ), spawn "audioctl toggle")
+    , ((0                           , xF86XK_AudioRaiseVolume   ), spawn "audioctl up")
+    , ((0                           , xF86XK_AudioLowerVolume   ), spawn "audioctl down")
     ]
     ++
 
@@ -189,7 +229,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ avoidStruts $ smartBorders $ tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -220,7 +260,11 @@ myLayout = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ avoidSt
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
+    , className =? "st-floating"    --> doFloat
+    , className =? "Dragon-drag-and-drop" --> doFloat
+    , title     =? "Steam - News"   --> doFloat
+    , title     =? "Friends List"   --> doFloat
+    , title     =? "Clipboard Editor" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
