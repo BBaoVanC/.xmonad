@@ -22,6 +22,6 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%enp4s0% - %wlp3s0% }\
+       , template = "hello }\
                     \{ %cpu% | %keymap.block% | %volume.block% | %date%"
        }
