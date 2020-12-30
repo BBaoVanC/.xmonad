@@ -22,6 +22,7 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
                     , Run Alsa "default" "Master" ["-t", "<status><volume>%", "--", "-o", "<fc=#d8dee9>婢 </fc>", "-O", "<fc=#d8dee9>墳 </fc>"]
                     -- 婢奄奔墳
                     , Run Date "%a %F %r" "date" 10
+                    , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
