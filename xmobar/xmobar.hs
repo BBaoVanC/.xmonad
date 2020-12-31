@@ -20,5 +20,9 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%UnsafeStdinReader% }\
-                    \{  %cpu% |  %memory% |  %kbd% | <action=`st -c st-floating -e pulsemixer` button=1>%alsa:default:Master%</action> |  %date%"
+                    \{  %cpu% | \
+                    \ %memory% | \
+                    \ %kbd% | \
+                    \<action=`st -c st-floating -e pulsemixer` button=1>%alsa:default:Master%</action> | \
+                    \ %date%"
        }
