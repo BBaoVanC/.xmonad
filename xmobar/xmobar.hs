@@ -21,14 +21,40 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
        , alignSep = "}{"
        , template = "%UnsafeStdinReader% }\
                     \{ <fc=#bf616a>\
-                    \ %cpu% \
-                    \</fc><fc=#434c5e>|</fc> <fc=#ebcb8b>\
-                    \ %memory% \
-                    \</fc><fc=#434c5e>|</fc> <fc=#a3be8c>\
-                    \ %kbd% \
-                    \</fc><fc=#434c5e>|</fc> <fc=#88c0d0>\
-                    \<action=`st -c st-floating -e pulsemixer` button=1>%alsa:default:Master%</action> \
-                    \</fc><fc=#434c5e>|</fc> <fc=#b48ead>\
-                    \ %date% \
-                    \</fc>"
+                    \<action=`st -c st-floating -e htop -s PERCENT_CPU` button=1>\
+                    \ %cpu%\
+                    \</action>\
+                    \</fc>\
+
+                    \<fc=#434c5e> | </fc>\
+
+                    \<fc=#ebcb8b>\
+                    \<action=`st -c st-floating -e htop -s PERCENT_MEM` button=1>\
+                    \ %memory%\
+                    \</action>\
+                    \</fc>\
+
+                    \<fc=#434c5e> | </fc>\
+
+                    \<fc=#a3be8c>\
+                    \<action=`swapkeymap` button=1>\
+                    \ %kbd%\
+                    \</action>\
+                    \</fc>\
+
+                    \<fc=#434c5e> | </fc>\
+
+                    \<fc=#88c0d0>\
+                    \<action=`audioctl toggle` button=1>\
+                    \<action=`st -c st-floating -e pulsemixer` button=3>\
+                    \%alsa:default:Master%\
+                    \</action>\
+                    \</action>\
+                    \</fc>\
+
+                    \<fc=#434c5e> | </fc>\
+
+                    \<fc=#b48ead>\
+                    \ %date%\
+                    \</fc> "
        }
