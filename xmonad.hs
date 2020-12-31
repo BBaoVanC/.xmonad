@@ -124,7 +124,10 @@ main = do
         , modMask               = mod1Mask
         , startupHook           = myStartupHook
         } `additionalKeys`
-          [ ((mod1Mask .|. shiftMask        , xK_p              ), spawn "powermenu")
+          [ ((mod1Mask                      , xK_b              ), sendMessage ToggleStruts)
+
+          -- CUSTOM KEYS
+          , ((mod1Mask .|. shiftMask        , xK_p              ), spawn "powermenu")
           , ((mod1Mask .|. shiftMask        , xK_l              ), spawn "light-locker-command -l")
 
           -- Program keys
