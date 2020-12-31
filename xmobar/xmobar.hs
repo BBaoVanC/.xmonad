@@ -1,23 +1,16 @@
 Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:hinting=true"
        , additionalFonts = []
-       , borderColor = "black"
-       , border = TopB
+       -- , borderColor = "black"
+       ,
        , bgColor = "#2e3440"
        , fgColor = "#d8dee9"
        , alpha = 255
        , position = Top
-       , textOffset = -1
-       , iconOffset = -1
        , lowerOnStart = True
-       , pickBroadest = False
-       , persistent = False
-       , hideOnStart = False
-       , iconRoot = "."
-       , allDesktops = True
-       , overrideRedirect = True
+       , persistent = True
        , commands = [
-                      Run Cpu ["-t","<total>%"] 20
-                    , Run Memory ["-t","<usedratio>%"] 20
+                      Run Cpu ["-t", "<total>%"] 20
+                    , Run Memory ["-t", "<usedratio>%"] 20
                     , Run Kbd []
                     , Run Alsa "default" "Master" ["-t", "<status><volume>%", "--", "-o", "<fc=#d8dee9>婢 </fc>", "-O", "<fc=#d8dee9>墳 </fc>"]
                     -- 婢奄奔墳
