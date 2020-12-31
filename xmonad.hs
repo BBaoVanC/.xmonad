@@ -9,19 +9,19 @@ import qualified Data.Map        as M
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
--- Layout
-import XMonad.Layout.Spacing
-import XMonad.Layout.NoBorders
+-- Appearance
+import XMonad.Layout.Spacing -- gaps
+import XMonad.Layout.NoBorders -- smartBorders
 
 import XMonad.Hooks.EwmhDesktops -- _NET_ACTIVE_WINDOW support
 
 -- Bar
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks -- make space for bar so it's not covered up
+import XMonad.Hooks.DynamicLog -- handle left side
 
 -- Keys
 import XMonad.Util.EZConfig(additionalKeys)
-import Graphics.X11.ExtraTypes.XF86
+import Graphics.X11.ExtraTypes.XF86 -- volume keys
 
 
 myTerminal              = "st"
