@@ -38,7 +38,7 @@ myClickJustFocuses :: Bool
 myClickJustFocuses = True
 
 
-myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ tiled ||| Full ||| Mirror tiled
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
