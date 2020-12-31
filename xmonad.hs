@@ -13,6 +13,8 @@ import XMonad.Util.SpawnOnce
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 
+import XMonad.Hooks.EwmhDesktops -- _NET_ACTIVE_WINDOW support
+
 -- Bar
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
@@ -96,8 +98,9 @@ main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar/xmobar.hs"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar/xmobar.hs"
 
-    xmonad $ docks $ defaultConfig
+    xmonad $ ewmh $ docks $ defaultConfig
         { manageHook            = manageDocks <+> manageHook defaultConfig <+> myManageHook
+        , handleEventHook       = handleEventHook def <+> fullscreenEventHook
         , workspaces            = myWorkspaces
         , terminal              = myTerminal
         , focusFollowsMouse     = myFocusFollowsMouse
