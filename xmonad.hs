@@ -87,6 +87,7 @@ myManageHook = composeAll
 -- Startup hook
 
 myStartupHook = do
+    spawnOnce "trayer --edge TOP --align right --widthtype request --distancefrom right --distance 5 --monitor 0"
     spawnOnce "~/.xmonad/autostart.sh &"
 
 
@@ -94,7 +95,7 @@ myStartupHook = do
 
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar/xmobar.hs"
-    xmproc1 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar/xmobar.hs"
+    xmproc1 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar/xmobar-notray.hs"
 
     xmonad $ ewmh $ docks $ defaultConfig
         { manageHook            = manageDocks <+> manageHook defaultConfig <+> myManageHook

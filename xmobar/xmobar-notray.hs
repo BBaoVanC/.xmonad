@@ -16,7 +16,6 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
                     -- 婢奄奔墳
                     , Run Date "%a %F %r" "date" 10
                     , Run UnsafeStdinReader
-                    , Run Com "/home/bbaovanc/.xmonad/xmobar/trayer-padding-icon.sh" [] "trayerpad" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
@@ -58,5 +57,5 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
                     \<fc=#b48ead>\
                     \ %date%\
                     \</fc>\
-                    \ %trayerpad%"
+                    \ "
        }
