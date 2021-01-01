@@ -6,4 +6,4 @@ nm-applet &  # networkmanager tray icon
 picom -b  # compositor (daemonized)
 light-locker &  # enable lightdm locking
 
-#echo UPDATESTARTUPTTY | gpg-connect-agent &
+echo UPDATESTARTUPTTY | gpg-connect-agent &
