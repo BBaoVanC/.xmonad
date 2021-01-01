@@ -87,7 +87,7 @@ myManageHook = composeAll
 -- Startup hook
 
 myStartupHook = do
-    spawnOnce "trayer --edge TOP --align right --widthtype request --distancefrom right --distance 5 --monitor 0"
+    spawnOnce "trayer --edge TOP --align right --widthtype request --distancefrom right --distance 5 --monitor 0 --iconspacing 2 --transparent true --alpha 0 --tint 0x2e3440"
     spawnOnce "~/.xmonad/autostart.sh &"
 
 
