@@ -7,3 +7,5 @@ picom -b  # compositor (daemonized)
 light-locker &  # enable lightdm locking
 
 echo UPDATESTARTUPTTY | gpg-connect-agent &
+
+systemctl --user restart redshift
