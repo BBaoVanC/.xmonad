@@ -93,7 +93,6 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Manage Hook
 myManageHook :: XMonad.Query(Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
     , className =? "st-floating"    --> doFloat
     , className =? "Dragon-drag-and-drop" --> doFloat
     , title     =? "Clipboard Editor" --> doFloat
