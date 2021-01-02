@@ -110,6 +110,11 @@ main = do
         , layoutHook            = myLayout
         , logHook               = dynamicLogWithPP xmobarPP
                                     { ppOutput  = \x -> hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x
+                                    , ppLayout  = \x -> case x of
+                                                          "Spacing Tall" -> "[]="
+                                                          "Spacing Mirror Tall" -> "TTT"
+                                                          "Spacing Full" -> "[F]"
+                                                          _ -> "?"
                                     , ppCurrent = xmobarColor "#eceff4" "#81a1c1:0" . wrap " " " "  -- Current workspace
                                     , ppVisible = xmobarColor "#b48ead" "#434c5e" . wrap " " " "    -- Visible but not current workspace (other monitor)
                                     , ppHidden  = xmobarColor "#d8dee9" "" . wrap "*" ""            -- Hidden workspaces, contain windows
