@@ -15,6 +15,9 @@ import XMonad.Layout.NoBorders -- smartBorders
 
 import XMonad.Hooks.EwmhDesktops -- _NET_ACTIVE_WINDOW support
 
+-- Layouts
+import XMonad.Layout.Tabbed
+
 -- Bar
 import XMonad.Hooks.ManageDocks -- make space for bar so it's not covered up
 import XMonad.Hooks.DynamicLog -- handle left side
@@ -38,7 +41,22 @@ myClickJustFocuses :: Bool
 myClickJustFocuses = True
 
 
-myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ tiled ||| Full ||| Mirror tiled
+myTabConfig = def { activeColor         = "#81a1c1"
+                  , activeBorderColor   = "#81a1c1"
+                  , activeTextColor     = "#eceff4"
+                  , inactiveColor       = "#2e3440"
+                  , inactiveBorderColor = "#2e3440"
+                  , inactiveTextColor   = "#4c566a"
+                  , urgentColor         = "#2e3440"
+                  , urgentBorderColor   = "#2e3440"
+                  , urgentTextColor     = "#ebcb8b"
+                  , fontName            = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:hinting=true"
+}
+
+myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
+    tiled |||
+    tabbed shrinkText myTabConfig |||
+    Mirror tiled
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -51,7 +69,6 @@ myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (B
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
-
 
 -- xmobar
 
@@ -114,6 +131,7 @@ main = do
                                                           "Spacing Tall" -> "[]="
                                                           "Spacing Mirror Tall" -> "TTT"
                                                           "Spacing Full" -> "[F]"
+                                                          "Spacing Tabbed Simplest" -> "[T]"
                                                           _ -> "?"
                                     , ppCurrent = xmobarColor "#eceff4" "#81a1c1:0" . wrap " " " "  -- Current workspace
                                     , ppVisible = xmobarColor "#b48ead" "#434c5e" . wrap " " " "    -- Visible but not current workspace (other monitor)
