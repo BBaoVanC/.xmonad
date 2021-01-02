@@ -126,11 +126,12 @@ main = do
           [ ((mod1Mask                      , xK_b              ), sendMessage ToggleStruts)
 
           -- CUSTOM KEYS
+          , ((mod1Mask .|. shiftMask        , xK_m              ), spawn "supermenu")
           , ((mod1Mask .|. shiftMask        , xK_p              ), spawn "powermenu")
           , ((mod1Mask .|. shiftMask        , xK_l              ), spawn "light-locker-command -l")
 
           -- Program keys
-          , ((mod1Mask .|. shiftMask        , xK_e              ), spawn "clipedit")
+          , ((mod4Mask .|. shiftMask        , xK_e              ), spawn "clipedit")
           , ((mod4Mask                      , xK_f              ), spawn "firefox-nightly")
           , ((mod4Mask                      , xK_d              ), spawn "discord-canary")
           , ((mod4Mask                      , xK_m              ), spawn "st -e neomutt")
