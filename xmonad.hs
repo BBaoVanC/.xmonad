@@ -16,6 +16,7 @@ import XMonad.Layout.NoBorders -- smartBorders
 import XMonad.Hooks.EwmhDesktops -- _NET_ACTIVE_WINDOW support
 
 -- Layouts
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 
 -- Bar
@@ -59,7 +60,7 @@ myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (B
     Mirror tiled
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -128,8 +129,8 @@ main = do
         , logHook               = dynamicLogWithPP xmobarPP
                                     { ppOutput  = \x -> hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x
                                     , ppLayout  = \x -> case x of
-                                                          "Spacing Tall" -> "[]="
-                                                          "Spacing Mirror Tall" -> "TTT"
+                                                          "Spacing ResizableTall" -> "[]="
+                                                          "Spacing Mirror ResizableTall" -> "TTT"
                                                           "Spacing Full" -> "[F]"
                                                           "Spacing Tabbed Simplest" -> "[T]"
                                                           _ -> "?"
@@ -147,6 +148,9 @@ main = do
         , startupHook           = myStartupHook
         } `additionalKeys`
           [ ((mod1Mask                      , xK_b              ), sendMessage ToggleStruts)
+
+          , ((mod1Mask                      , xK_a              ), sendMessage MirrorExpand)
+          , ((mod1Mask                      , xK_z              ), sendMessage MirrorShrink)
 
           -- CUSTOM KEYS
           , ((mod1Mask .|. shiftMask        , xK_m              ), spawn "supermenu")
