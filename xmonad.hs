@@ -93,7 +93,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Manage Hook
 myManageHook :: XMonad.Query(Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
-    , className =? "st-floating"    --> doFloat
+    [ className =? "st-floating"    --> doFloat
     , className =? "Dragon-drag-and-drop" --> doFloat
     , title     =? "Clipboard Editor" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
@@ -179,7 +179,7 @@ main = do
           , ((mod4Mask .|. mod1Mask         , xK_x              ), spawn "setxkbmap -layout us -variant altgr-intl")
 
           -- Screenshot keys
-          , ((0                             , xK_Print          ), spawn "ssclip select")
+          , ((0                             , xK_Print          ), spawn "ssclip sel")
           , ((controlMask                   , xK_Print          ), spawn "ssclip window")
           , ((controlMask .|. shiftMask     , xK_Print          ), spawn "ssclip full")
 
