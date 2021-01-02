@@ -57,7 +57,7 @@ myTabConfig = def { activeColor         = "#81a1c1"
 myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
     tiled |||
     tabbed shrinkText myTabConfig |||
-    Mirror tiled
+    noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = ResizableTall nmaster delta ratio []
@@ -129,7 +129,7 @@ main = do
                                     { ppOutput  = \x -> hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x
                                     , ppLayout  = \x -> case x of
                                                           "Spacing ResizableTall" -> "[]="
-                                                          "Spacing Mirror ResizableTall" -> "TTT"
+                                                       -- "Spacing Mirror ResizableTall" -> "TTT"
                                                           "Spacing Full" -> "[F]"
                                                           "Spacing Tabbed Simplest" -> "[T]"
                                                           _ -> "?"
