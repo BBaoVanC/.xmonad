@@ -21,6 +21,7 @@ Config { font = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:h
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%UnsafeStdinReader% }{\
+                    \    \
                     \<fc=#bf616a>\
                     \<action=`st -c st-floating -e htop -s PERCENT_CPU` button=1>\
                     \ %cpu%\
