@@ -54,9 +54,9 @@ myTabConfig = def { activeColor         = "#81a1c1"
                   , fontName            = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:hinting=true"
 }
 
-myLayout = avoidStruts $ smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
+myLayout = avoidStruts (smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
     tiled |||
-    tabbed shrinkText myTabConfig |||
+    tabbed shrinkText myTabConfig) |||
     noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -130,7 +130,7 @@ main = do
                                     , ppLayout  = \x -> case x of
                                                           "Spacing ResizableTall" -> "[]="
                                                        -- "Spacing Mirror ResizableTall" -> "TTT"
-                                                          "Spacing Full" -> "[F]"
+                                                          "Full" -> "[F]"
                                                           "Spacing Tabbed Simplest" -> "[T]"
                                                           _ -> "?"
                                     , ppCurrent = xmobarColor "#eceff4" "#81a1c1:0" . wrap " " " "  -- Current workspace
