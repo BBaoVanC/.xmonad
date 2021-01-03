@@ -137,7 +137,7 @@ main = do
                                     , ppVisible = xmobarColor "#b48ead" "#434c5e" . wrap " " " "    -- Visible but not current workspace (other monitor)
                                     , ppHidden  = xmobarColor "#d8dee9" "" . wrap "*" ""            -- Hidden workspaces, contain windows
                                     , ppHiddenNoWindows = xmobarColor "#4c566a" ""                  -- Hidden workspaces, no windows
-                                    , ppTitle   = xmobarColor "#eceff4" "" . shorten 100            -- Title of active window
+                                    , ppTitle   = xmobarColor "#eceff4" "" . xmobarRaw              -- Title of active window
                                     , ppSep     = "<fc=#434c5e> | </fc>"                            -- Separator
                                     , ppUrgent  = xmobarColor "#ebcb8b" "" . wrap "!" "!"           -- Urgent workspaces
                                     , ppExtras  = [windowCount]                                     -- Number of windows in current workspace
