@@ -54,13 +54,14 @@ myTabConfig = def { activeColor         = "#81a1c1"
                   , fontName            = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:hinting=true"
 }
 
-myLayout = avoidStruts (smartBorders (spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
-    tiled) |||
+mySpacing = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True
+myLayout = avoidStruts (
+    tiled |||
     tabbed shrinkText myTabConfig) |||
     noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = ResizableTall nmaster delta ratio []
+     tiled   = smartBorders $ mySpacing $ ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
      nmaster = 1
