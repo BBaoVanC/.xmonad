@@ -54,8 +54,8 @@ myTabConfig = def { activeColor         = "#81a1c1"
                   , fontName            = "xft:JetBrainsMono Nerd Font:style=Bold:size=10:antialias=true:hinting=true"
 }
 
-myLayout = avoidStruts (smartBorders $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
-    tiled |||
+myLayout = avoidStruts (smartBorders (spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $
+    tiled) |||
     tabbed shrinkText myTabConfig) |||
     noBorders Full
   where
@@ -131,7 +131,7 @@ main = do
                                                           "Spacing ResizableTall" -> "[]="
                                                        -- "Spacing Mirror ResizableTall" -> "TTT"
                                                           "Full" -> "[F]"
-                                                          "Spacing Tabbed Simplest" -> "[T]"
+                                                          "Tabbed Simplest" -> "[T]"
                                                           _ -> "?"
                                     , ppCurrent = xmobarColor "#eceff4" "#81a1c1:0" . wrap " " " "  -- Current workspace
                                     , ppVisible = xmobarColor "#b48ead" "#434c5e" . wrap " " " "    -- Visible but not current workspace (other monitor)
