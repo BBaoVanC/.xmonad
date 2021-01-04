@@ -114,8 +114,8 @@ main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobar/xmobar.hs"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobar/xmobar-notray.hs"
 
-    xmonad $ ewmh $ docks $ defaultConfig
-        { manageHook            = manageDocks <+> manageHook defaultConfig <+> myManageHook
+    xmonad $ ewmh $ docks $ def
+        { manageHook            = manageDocks <+> manageHook def <+> myManageHook
         , handleEventHook       = handleEventHook def <+> fullscreenEventHook
         , workspaces            = myWorkspaces
         , terminal              = myTerminal
