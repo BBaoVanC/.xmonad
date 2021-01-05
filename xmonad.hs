@@ -152,6 +152,9 @@ main = do
           , ((mod1Mask                      , xK_a              ), sendMessage MirrorExpand)
           , ((mod1Mask                      , xK_z              ), sendMessage MirrorShrink)
 
+          , ((mod4Mask                      , xK_a              ), spawn "alacritty")
+          , ((mod4Mask                      , xK_k              ), spawn "kitty")
+
           -- CUSTOM KEYS
           , ((mod1Mask .|. shiftMask        , xK_m              ), spawn "supermenu")
           , ((mod1Mask .|. shiftMask        , xK_p              ), spawn "powermenu")
