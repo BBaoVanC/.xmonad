@@ -57,11 +57,15 @@ myTabConfig = def { activeColor         = "#81a1c1"
 mySpacing = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True
 myLayout = avoidStruts (
     tiled |||
-    tabbed shrinkText myTabConfig) |||
-    noBorders Full
+    tabbed shrinkText myTabConfig) ||| -- `)` means that the next layout(s) don't have avoidStruts
+    noBorders Full -- fullscreen mode (no bar, no borders, no gaps)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = smartBorders $ mySpacing $ ResizableTall nmaster delta ratio []
+     -- smartBorders    : hide borders when only one window visible (unless multi-monitor)
+     -- mySpacing       : defined above myLayout, just contains basic gaps settings
+     -- ResizeableTall  : tall layout, but you can resize windows vertically
+     -- nmaster, ratio, and delta are defined below
 
      -- The default number of windows in the master pane
      nmaster = 1
