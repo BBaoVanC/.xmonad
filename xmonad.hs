@@ -165,7 +165,7 @@ main = do
           , ((mod1Mask .|. shiftMask        , xK_l              ), spawn "light-locker-command -l")
 
           -- Program keys
-          , ((mod4Mask .|. shiftMask        , xK_e              ), spawn "clipedit")
+          , ((mod4Mask                      , xK_c              ), spawn "clipedit")
           , ((mod4Mask                      , xK_f              ), spawn "firefox-nightly")
           , ((mod4Mask                      , xK_d              ), spawn "discord-canary")
           , ((mod4Mask                      , xK_m              ), spawn "st -e neomutt")
