@@ -179,8 +179,10 @@ main = do
           , ((mod4Mask .|. shiftMask        , xK_period         ), spawn "dunstctl context")
 
           -- Upload keys
-          , ((mod4Mask                      , xK_u              ), spawn "imupdrag")
-          , ((mod4Mask .|. shiftMask        , xK_u              ), spawn "imupclip")
+          , ((mod4Mask                              , xK_u              ), spawn "imupdrag url")
+          , ((mod4Mask .|. controlMask              , xK_u              ), spawn "imupdrag utf8_url")
+          , ((mod4Mask .|. shiftMask                , xK_u              ), spawn "imupclip url")
+          , ((mod4Mask .|. shiftMask .|. controlMask, xK_u              ), spawn "imupclip utf8_url")
 
           -- Keyboard layout keys
           , ((mod4Mask .|. mod1Mask         , xK_z              ), spawn "setxkbmap -layout us")
