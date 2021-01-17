@@ -192,6 +192,7 @@ main = do
           , ((0                             , xK_Print          ), spawn "ssclip sel")
           , ((controlMask                   , xK_Print          ), spawn "ssclip window")
           , ((controlMask .|. shiftMask     , xK_Print          ), spawn "ssclip full")
+          , ((mod4Mask                      , xK_g              ), spawn "clipgimp")
 
           -- Volume keys
           , ((0                             , xF86XK_AudioMute          ), spawn "audioctl toggle")
