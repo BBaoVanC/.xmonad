@@ -30,7 +30,7 @@ import Graphics.X11.ExtraTypes.XF86 -- volume keys
 
 myTerminal              = "st"
 myBorderWidth           = 4
-myNormalBorderColor     = "#3b4252"
+myNormalBorderColor     = "#2e3440"
 myFocusedBorderColor    = "#81a1c1"
 
 -- Whether focus follows the mouse pointer.
