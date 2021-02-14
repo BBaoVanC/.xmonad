@@ -175,6 +175,7 @@ main = do
           , ((mod4Mask                      , xK_d              ), spawn "discord-canary")
           , ((mod4Mask                      , xK_m              ), spawn "st -e neomutt")
           , ((mod4Mask                      , xK_r              ), spawn "st -e ranger")
+          , ((mod4Mask                      , xK_n              ), spawn "st -e newsboat")
           , ((mod4Mask                      , xK_p              ), spawn "passmenu")
 
           -- Dunst keys
