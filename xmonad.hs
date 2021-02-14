@@ -5,6 +5,9 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+-- Behavior
+import XMonad.Actions.Promote
+
 -- Running
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
@@ -152,13 +155,12 @@ main = do
         , modMask               = mod1Mask
         , startupHook           = myStartupHook
         } `additionalKeys`
-          [ ((mod1Mask                      , xK_b              ), sendMessage ToggleStruts)
+          [ ((mod1Mask                      , xK_Return         ), promote)
 
+          -- Added functionality
+          , ((mod1Mask                      , xK_b              ), sendMessage ToggleStruts)
           , ((mod1Mask                      , xK_a              ), sendMessage MirrorExpand)
           , ((mod1Mask                      , xK_z              ), sendMessage MirrorShrink)
-
-          , ((mod4Mask                      , xK_a              ), spawn "alacritty")
-          , ((mod4Mask                      , xK_k              ), spawn "kitty")
 
           -- CUSTOM KEYS
           , ((mod1Mask .|. shiftMask        , xK_m              ), spawn "supermenu")
@@ -166,6 +168,8 @@ main = do
           , ((mod1Mask .|. shiftMask        , xK_l              ), spawn "light-locker-command -l")
 
           -- Program keys
+          , ((mod4Mask                      , xK_a              ), spawn "alacritty")
+          , ((mod4Mask                      , xK_k              ), spawn "kitty")
           , ((mod4Mask                      , xK_c              ), spawn "clipedit")
           , ((mod4Mask                      , xK_f              ), spawn "firefox-nightly")
           , ((mod4Mask                      , xK_d              ), spawn "discord-canary")
