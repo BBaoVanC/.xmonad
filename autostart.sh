@@ -6,6 +6,6 @@ feh --no-fehbg --bg-fill ~/wallpaper  # set background
 picom -b  # compositor (daemonized)
 light-locker &  # enable lightdm locking
 
-transmission-daemon -w ~/downloads --global-seedratio 1 &
+transd & # transmission-daemon script
 
 echo UPDATESTARTUPTTY | gpg-connect-agent &
